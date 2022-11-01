@@ -68,6 +68,7 @@ export PATH
 . "${UAC_DIR}/lib/get_system_arch.sh"
 . "${UAC_DIR}/lib/get_user_home_list.sh"
 . "${UAC_DIR}/lib/hash_collector.sh"
+. "${UAC_DIR}/lib/hash_wrapper.sh"
 . "${UAC_DIR}/lib/is_element_in_list.sh"
 . "${UAC_DIR}/lib/is_integer.sh"
 . "${UAC_DIR}/lib/is_running_with_root_privileges.sh"
@@ -869,14 +870,18 @@ else
     2>>"${UAC_STDERR_LOG_FILE}"
   ua_file_count=`find "${ua_destination_dir}/${ua_output_name}" -print | wc -l`
   if [ "${ua_file_count}" -gt 2 ]; then
-    printf %b "Please check collected artifacts in '${ua_destination_dir}/${ua_output_name}'\n"
+    printf %b "Collected artifacts copied to '${ua_destination_dir}/${ua_output_name}'\n"
+    # hash collected files
+    printf %b "Hashing collected files. Please wait...\n"
+    cd "${ua_destination_dir}" || exit 1
+    ua_output_file_hash=`hash_wrapper "${ua_output_name}" 2>/dev/null`   
     cd "${UAC_DIR}" || exit 1
     if ${ua_debug_mode}; then
       printf %b "Temporary directory not removed '${TEMP_DATA_DIR}'\n"
     else
       rm -rf "${TEMP_DATA_DIR}" >/dev/null 2>/dev/null
       if [ -d "${TEMP_DATA_DIR}" ]; then
-          printf %b "Cannot remove temporary directory '${TEMP_DATA_DIR}'\n"
+        printf %b "Cannot remove temporary directory '${TEMP_DATA_DIR}'\n"
       fi
     fi
   else
