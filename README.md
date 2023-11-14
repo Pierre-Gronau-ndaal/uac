@@ -101,7 +101,7 @@ Common usage scenarios may include the following:
 **Collect all artifacts based on the ```full``` profile, but limit the data collection based on the date range provided.**
 
 ```shell
-./uac -p full /tmp --date-range-start 2021-05-01 --date-range-end 2021-08-31
+./uac -p full /tmp --start-date 2021-05-01 --end-date 2021-08-31
 ```
 
 **Collect all but live response artifacts from a Linux disk image mounted in ```/mnt/ewf```.**

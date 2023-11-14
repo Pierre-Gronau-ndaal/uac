@@ -68,10 +68,10 @@ Collection Arguments:
                     Write all temporary data to this directory.
 
 Filter Arguments:
-      --date-range-start YYYY-MM-DD
+      --start-date YYYY-MM-DD
                     Only collects files that were last modified/accessed/changed
                     after the given date.
-      --date-range-end YYYY-MM-DD
+      --end-date YYYY-MM-DD
                     Only collects files that were last modified/accessed/changed
                     before the given date.
 

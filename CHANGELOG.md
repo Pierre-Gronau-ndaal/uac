@@ -20,6 +20,11 @@
 
 - profiles/offline.yaml: New 'offline' profile that can be used during offline collections.
 
+### Changes
+
+- --date-range-start command line switch was renamed to --start-date. Don't forget to update your documentation.
+- --date-range-end command line switch was renamed to --end-date. Don't forget to update your documentation.
+
 ### Tools
 
 - statically linked ```zip``` is now available for the following systems:
