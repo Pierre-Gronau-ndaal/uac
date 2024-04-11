@@ -1,0 +1,9 @@
+version: 1.0
+artifacts:
+  -
+    description: Display all applications located at /Users/%user%/Applications directory.
+    supported_os: [macos]
+    collector: command
+    command: brew list
+    output_file: brew_list_%user_home%_Applications.txt
+    
